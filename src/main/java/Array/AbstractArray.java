@@ -93,7 +93,7 @@ public abstract class AbstractArray<T extends Comparable<T>> implements Array<T>
     public void mergeSort(){
         T []merged = mergeSort(0, this.length);
         if (length >= 0) {
-            this.copy(merged, this.length);
+            System.arraycopy(merged, 0, this.arr, 0, this.length);
         }
     }
 
@@ -205,11 +205,6 @@ public abstract class AbstractArray<T extends Comparable<T>> implements Array<T>
         if (index < this.length) {
             this.arr[index] = value;
         }
-    }
-
-    @Override
-    public void copy(T[] other, int size){
-        System.arraycopy(other, 0, this.arr, 0, size);
     }
 
     @Override
