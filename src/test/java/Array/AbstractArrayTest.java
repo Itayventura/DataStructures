@@ -13,9 +13,9 @@ class AbstractArrayTest {
     private static final int RANGE = 100;
     private static final int LENGTH_BOUND = 10;
 
-    private static int[] ints;
-    private static int[] emptyInts = new int[]{};
-    private static int[] singleInt = new int[]{0};
+    private static Integer[] ints;
+    private static Integer[] emptyInts = new Integer[]{};
+    private static Integer[] singleInt = new Integer[]{0};
 
     private static IntegersArray arr;
     private static IntegersArray emptyArr;
@@ -35,7 +35,7 @@ class AbstractArrayTest {
 
     private static void generateRandomArray(){
         int length = new Random().nextInt(5 + LENGTH_BOUND);
-        ints = new int[length];
+        ints = new Integer[length];
         for (int i = 0; i < length; i++){
             ints[i] = new Random().nextInt(RANGE);
         }
