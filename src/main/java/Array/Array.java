@@ -2,7 +2,6 @@ package Array;
 
 public interface Array<T> {
 
-    boolean isSorted();
     boolean isEmpty();
     String toString();
     int length();
