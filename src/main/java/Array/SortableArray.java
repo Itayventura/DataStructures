@@ -3,6 +3,20 @@ package Array;
 import java.util.Random;
 
 public abstract class SortableArray<T extends Comparable<T>> extends AbstractArray<T> implements Sortable {
+    static class ArrayFactory<T extends Comparable<T>> {
+
+        public T[] getArray(int size)
+        {
+            return  (T[]) new Comparable[size];
+        }
+
+        public T[] getArrayWithValue(T value){
+            T[] arr = getArray(1);
+            arr[0] = value;
+            return arr;
+        }
+    }
+
     SortableArray(T[] arr) {
         super(arr);
     }
@@ -77,29 +91,29 @@ public abstract class SortableArray<T extends Comparable<T>> extends AbstractArr
 
     @Override
     public void mergeSort(){
-        T []merged = mergeSort(0, this.length);
+        T []merged = mergeSort(0, this.length, new ArrayFactory<T>());
         if (length >= 0) {
             System.arraycopy(merged, 0, this.arr, 0, this.length);
         }
     }
 
-    private T[] mergeSort(int start, int end) {
+    private T[] mergeSort(int start, int end, ArrayFactory<T> factory) {
         int middle = (start + end)/2;
         if (start+1 == end){
-            return (T[]) new Comparable[]{this.arr[start]};
+            return factory.getArrayWithValue(this.arr[start]);
         } else if (start +1 < end){
-            return merge(mergeSort(start, middle), mergeSort(middle, end));
+            return merge(mergeSort(start, middle, factory), mergeSort(middle, end, factory), factory);
         } else{
-            return (T[]) new Comparable[]{};
+            return factory.getArray(0);
         }
     }
 
-    private T[] merge(T[] first, T[] second) {
+    private T[] merge(T[] first, T[] second, ArrayFactory<T> factory) {
 
         int m = 0;
         int f = 0;
         int s = 0;
-        T[] merged = (T[]) new Comparable[first.length + second.length];
+        T[] merged = factory.getArray(first.length + second.length);
 
         while(f < first.length && s < second.length){
             merged[m++] = (second[s].compareTo(first[f]) >= 0)? first[f++]:second[s++];
