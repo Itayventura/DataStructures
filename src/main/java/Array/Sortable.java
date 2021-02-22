@@ -6,4 +6,6 @@ public interface Sortable {
     void mergeSort();
     void heapSort();
     void quickSort();
+    boolean isSorted();
+
 }
