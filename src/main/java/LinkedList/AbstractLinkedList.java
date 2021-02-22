@@ -1,15 +1,7 @@
 package LinkedList;
 
 public abstract class AbstractLinkedList<T> implements LinkedList<T> {
-    protected class Node<T>{
-        T value;
-        Node<T> next;
 
-        private Node(T value){
-            this.value = value;
-            this.next = null;
-        }
-    }
 
     protected Node<T> head;
     protected int size;
