@@ -2,7 +2,7 @@ package Array;
 
 import java.util.Arrays;
 
-public class IntegersArray extends AbstractArray<Integer>{
+public class IntegersArray extends SortableArray<Integer>{
     public IntegersArray(Integer[] arr) {
         super(arr);
     }
