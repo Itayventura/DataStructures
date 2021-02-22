@@ -33,11 +33,13 @@ public abstract class AbstractLinkedList<T> implements LinkedList<T> {
     }
 
     @Override
-    public void removeFirst(){
+    public T removeFirst(){
+        Node<T> node = this.head;
         if (this.head != null) {
             this.head = this.head.next;
             this.size--;
         }
+        return node == null? null: node.value;
     }
 
     @Override
